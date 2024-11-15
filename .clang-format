@@ -1,0 +1,36 @@
+# see https://clang.llvm.org/docs/ClangFormatStyleOptions.html
+---
+Language: Cpp
+Standard: Latest
+
+ColumnLimit: 140
+
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+
+AlignEscapedNewlines: Left
+
+AllowShortFunctionsOnASingleLine: All
+AllowShortLambdasOnASingleLine: All
+AllowShortBlocksOnASingleLine: Always
+#AllowShortCaseExpressionOnASingleLine: true
+AllowShortCaseLabelsOnASingleLine: true
+#AllowShortCompoundRequirementOnASingleLine: true
+AllowShortEnumsOnASingleLine: true
+AllowShortIfStatementsOnASingleLine: true
+AllowShortLoopsOnASingleLine: true
+
+
+AlwaysBreakTemplateDeclarations: Yes
+#BreakConstructorInitializers: BeforeComma
+PackConstructorInitializers: NextLine
+
+CompactNamespaces: true
+FixNamespaceComments: true
+
+MaxEmptyLinesToKeep: 2
+IndentPPDirectives: AfterHash
+InsertBraces: true
+PointerAlignment: Left
+SeparateDefinitionBlocks: Always

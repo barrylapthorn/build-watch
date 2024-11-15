@@ -1,0 +1,17 @@
+{
+  "files": [
+    {
+      "src": "CMakeLists.txt.mustache",
+      "dest": "CMakeLists.txt",
+      "extensions": [".hpp", ".cpp", ".h"]
+    },
+    {
+      "src": "BUILD.mustache",
+      "dest": "BUILD",
+      "extensions": [".hpp", ".cpp", ".h"]
+    }
+  ],
+  "ignoreFiles": [
+    ".gitignore"
+  ]
+}

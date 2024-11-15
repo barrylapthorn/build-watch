@@ -57,3 +57,11 @@ FetchContent_Declare(
         GIT_TAG        v0.7.2 # <HASH or TAG>
 )
 FetchContent_MakeAvailable(cpptrace)
+
+# Get git sha info and so on
+# https://github.com/andrew-hardin/cmake-git-version-tracking/tree/masterc/
+FetchContent_Declare(cmake_git_version_tracking
+        GIT_REPOSITORY https://github.com/andrew-hardin/cmake-git-version-tracking.git
+        GIT_TAG 904dbda1336ba4b9a1415a68d5f203f576b696bb
+)
+FetchContent_MakeAvailable(cmake_git_version_tracking)

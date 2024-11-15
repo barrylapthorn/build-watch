@@ -1,0 +1,27 @@
+
+add_library(libTestHelpers
+    include/TestHelpers/TempDirectory.hpp
+    src/TempDirectory.cpp
+)
+
+target_include_directories(libTestHelpers
+    PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+
+target_link_libraries(libTestHelpers
+    PUBLIC
+    fmt::fmt
+    spdlog::spdlog
+    nlohmann_json::nlohmann_json
+
+    PRIVATE
+    compiler_options
+    third-party
+)
+
+if (PACKAGE_TESTS)
+    enable_testing()
+    include(GoogleTest)
+    add_subdirectory(tests)
+endif ()

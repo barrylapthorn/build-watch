@@ -20,15 +20,33 @@ include(FetchContent)
 # Include our helpers in the cmake dir
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
+# or if we don't add cmake to the path:  include(cmake/dependencies.cmake)
 include(dependencies)
 include(compiler_options)
+include(prevent_in_source_builds)
+
+# Will call setup functions
+include(CMakeProjectOptions.cmake)
+
+set(GIT_SHA "Unknown" CACHE STRING "SHA this build was generated from")
+string(
+        SUBSTRING "${GIT_SHA}"
+        0
+        8
+        GIT_SHORT_SHA)
+
 
 # Threading
 find_package(Threads REQUIRED)
+
+###############################################################################
+#  Finally.... our code
+###############################################################################
 
 # Add third-party header-only code.
 add_subdirectory(third-party)
 
 # Include our sub-directories.
-add_subdirectory(libs/lib-build-watch)
+add_subdirectory(libs/libTestHelpers)
+add_subdirectory(libs/libBuildWatch)
 add_subdirectory(apps/build-watch)

@@ -1,8 +1,8 @@
 {
-  "version": 3,
+  "version": 6,
   "cmakeMinimumRequired": {
     "major": 3,
-    "minor": 29,
+    "minor": 30,
     "patch": 0
   },
   "configurePresets": [
@@ -129,7 +129,7 @@
       },
       "filter": {
         "include": {
-          "name": "lib-\\.*"
+          "name": "lib\\.*"
         }
       }
     },
@@ -160,6 +160,22 @@
       "description": "Enable output and stop on failure",
       "inherits": "test-common",
       "configurePreset": "unixlike-clang-release"
+    }
+  ],
+  "packagePresets": [
+    {
+      "name": "package-unixlike-gcc-release",
+      "configurePreset": "unixlike-gcc-release",
+      "generators": [
+        "TGZ"
+      ],
+      "output": {
+        "verbose": true
+      }
+    },
+    {
+      "name": "default",
+      "inherits": "package-unixlike-gcc-release"
     }
   ]
 }

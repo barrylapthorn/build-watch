@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="GitSharedSettings">
+    <option name="FORCE_PUSH_PROHIBITED_PATTERNS">
+      <list />
+    </option>
+  </component>
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/out/build/unixlike-gcc-debug-mold/_deps/cli11-src" vcs="Git" />
@@ -7,6 +12,11 @@
     <mapping directory="$PROJECT_DIR$/out/build/unixlike-gcc-debug-mold/_deps/fmt-src" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/out/build/unixlike-gcc-debug-mold/_deps/libdwarf-src" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/out/build/unixlike-gcc-debug-mold/_deps/spdlog-src" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/out/build/unixlike-gcc-debug/_deps/cli11-src" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/out/build/unixlike-gcc-debug/_deps/cpptrace-src" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/out/build/unixlike-gcc-debug/_deps/fmt-src" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/out/build/unixlike-gcc-debug/_deps/libdwarf-src" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/out/build/unixlike-gcc-debug/_deps/spdlog-src" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/out/build/unixlike-gcc-release-mold/_deps/cli11-src" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/out/build/unixlike-gcc-release-mold/_deps/cpptrace-src" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/out/build/unixlike-gcc-release-mold/_deps/fmt-src" vcs="Git" />

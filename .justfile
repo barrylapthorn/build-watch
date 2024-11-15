@@ -6,8 +6,15 @@ docs_dir := justfile_directory() + '/docs'
 root_dir := justfile_directory()
 build_dir := justfile_directory() + '/out'
 
+# https://just.systems/man/en/settings.html?highlight=positional#settings
+set positional-arguments
+
 default:
     @just --list --justfile {{justfile()}}
+
+[private]
+banner *ARGS:
+    @printf '\e[42;37;1m[%s] %-72s \e[m\n' "$(date +%H:%M:%S)" "{{ARGS}}"
 
 # configure using the basic gcc/debug preset
 configure:
@@ -52,10 +59,19 @@ clang-release:
 benchmark: release
     ctest --preset "unixlike-gcc-release" -R "\.*_benchmarks"
 
+# create package for linux
+package: test-release
+    cpack --preset "package-unixlike-gcc-release"
+
 # reformat code
 reformat: has_clang_format
     find {{root_dir}}/apps -iname '*.hpp' -o -iname '*.cpp' | xargs clang-format -i
     find {{root_dir}}/libs -iname '*.hpp' -o -iname '*.cpp' | xargs clang-format -i
+
+# build release and run it at the root level of this repository
+[private]
+dogfood: release
+    {{root_dir}}/out/build/unixlike-gcc-release/apps/build-watch/build-watch {{root_dir}}
 
 # clean debug build
 clean:
@@ -66,8 +82,9 @@ clean-release:
     cmake --preset "unixlike-gcc-release" --target clean
     cmake --preset "unixlike-clang-release" --target clean
 
+# Removes build dir (all configurations) and `git clean` in the `subprojects` dir
 deep-clean:
-    rm -r buildDir
+    rm -r {{build_dir}}
     git clean -dfX subprojects/
 
 [private]
@@ -79,13 +96,5 @@ has_clang_format:
 venv:
     python3 -m venv {{docs_dir}}/.venv
 
-# build the docs
-docs:
-    {{scripts_dir}}/docs.bash build
-
-# run an interactive web server for the docs
-docs-serve:
-    {{scripts_dir}}/docs.bash
-
-all: test docs
-    @echo "TODO:  deploy code, tags, etc."
+all: test package
+    @echo "Build debug and release, run tests and build package"
